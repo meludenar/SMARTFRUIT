@@ -1,0 +1,109 @@
+{
+  "model_name": "Huber Regression",
+  "selection_method": "grouped validation; test frozen",
+  "target": "loss_calc",
+  "unit": "single-lot Work Order linked to first QC",
+  "features": [
+    "inspection_month",
+    "sample_count_total",
+    "n_pallets",
+    "avg_count_per_box_mean",
+    "avg_count_per_box_max",
+    "pulp_temp_mean",
+    "pulp_temp_max",
+    "oleocellosis_pct",
+    "oleocellosis_pct_max_pallet",
+    "styler_pct",
+    "styler_pct_max_pallet",
+    "skin_breakdown_pct",
+    "skin_breakdown_pct_max_pallet",
+    "decay_pct",
+    "decay_pct_max_pallet",
+    "mold_pct",
+    "mold_pct_max_pallet",
+    "scars_pct",
+    "scars_pct_max_pallet",
+    "blanching_pct",
+    "blanching_pct_max_pallet",
+    "yellow_color_pct",
+    "yellow_color_pct_max_pallet",
+    "label_brand_std",
+    "country_origin_std",
+    "size_norm"
+  ],
+  "numeric_features": [
+    "inspection_month",
+    "sample_count_total",
+    "n_pallets",
+    "avg_count_per_box_mean",
+    "avg_count_per_box_max",
+    "pulp_temp_mean",
+    "pulp_temp_max",
+    "oleocellosis_pct",
+    "oleocellosis_pct_max_pallet",
+    "styler_pct",
+    "styler_pct_max_pallet",
+    "skin_breakdown_pct",
+    "skin_breakdown_pct_max_pallet",
+    "decay_pct",
+    "decay_pct_max_pallet",
+    "mold_pct",
+    "mold_pct_max_pallet",
+    "scars_pct",
+    "scars_pct_max_pallet",
+    "blanching_pct",
+    "blanching_pct_max_pallet",
+    "yellow_color_pct",
+    "yellow_color_pct_max_pallet"
+  ],
+  "categorical_features": [
+    "label_brand_std",
+    "country_origin_std",
+    "size_norm"
+  ],
+  "baseline_dev_median": 16.153846153846153,
+  "test_lots": [
+    "5276",
+    "5293",
+    "5316",
+    "5365",
+    "5382",
+    "5408",
+    "5429",
+    "5518",
+    "5656",
+    "5775",
+    "5810",
+    "5857",
+    "5878"
+  ],
+  "excluded_negative_loss": true,
+  "vision_bridge_feature": "oleocellosis_pct",
+  "input_contract": {
+    "reception_manifest": "SmartFruit_reception_manifest.csv",
+    "scan_key": "scan_code",
+    "scan_context": [
+      "lot_id",
+      "label_brand",
+      "label_brand_std",
+      "country_origin",
+      "country_origin_std",
+      "size_norm",
+      "inspection_month"
+    ],
+    "vision_output_required_for_model": [
+      "oleocellosis_pct"
+    ],
+    "vision_output_traceability": [
+      "image_id",
+      "total_fruits",
+      "oleocellosis_count",
+      "mean_confidence"
+    ]
+  },
+  "output_contract": {
+    "predicted_loss_pct": "numeric signal for Decision Layer",
+    "decision": "not produced by this model"
+  },
+  "warning": "Predictive Loss v1.3 is exploratory. Vision AI oleocellosis estimates must be validated against historical/manual measurements. This model does not directly produce Standard/Expand/Escalate and does not yet represent Hidden Quality Risk."
+}
